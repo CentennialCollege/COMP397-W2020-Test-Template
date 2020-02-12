@@ -56,12 +56,15 @@ public:
 	// a function to access the private running variable
 	bool running() { return m_bRunning; }
 
-	// getters
+	// getters & setters
 	SDL_Renderer* getRenderer();
 	glm::vec2 getMousePosition();
 
 	void setFrames(Uint32 frames);
 	Uint32 getFrames();
+
+	void setDeltaTime(float time);
+	float getDeltaTime();
 
 	void changeSceneState(SceneState newState);
 	void quit();
@@ -84,6 +87,7 @@ private:
 	glm::vec2 m_mousePosition;
 
 	Uint32 m_frames;
+	float m_deltaTime;
 
 	// Scene Data Members
 	Scene* m_currentScene;

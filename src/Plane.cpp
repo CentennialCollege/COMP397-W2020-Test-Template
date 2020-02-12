@@ -1,7 +1,7 @@
 #include "Plane.h"
 #include "Game.h"
 
-Plane::Plane() :m_maxSpeed(10.0f), m_isMoving(false)
+Plane::Plane() :m_maxSpeed(5.0f), m_isMoving(false)
 {
 	TheTextureManager::Instance()->load("../Assets/textures/plane.png",
 		"plane", TheGame::Instance()->getRenderer());
@@ -37,10 +37,9 @@ void Plane::update()
 	auto currentPosition = getPosition();
 	auto currentVelocity = getVelocity();
 
-	if(!m_isMoving)
-	{
-		setVelocity(glm::vec2(Util::lerp(currentVelocity.x, 0.0f, 0.02f), currentVelocity.y));
-	}
+	const auto deltaTime = TheGame::Instance()->getDeltaTime();
+	setVelocity(glm::vec2(currentVelocity.x * (1.0f - deltaTime * 5.0f), currentVelocity.y));
+
 	
 	auto deltax = currentPosition.x + currentVelocity.x;
 	setPosition(glm::vec2(deltax, currentPosition.y));
@@ -55,6 +54,7 @@ void Plane::clean()
 void Plane::move(Move newMove)
 {
 	auto currentVelocity = getVelocity();
+	
 	
 	switch(newMove)
 	{

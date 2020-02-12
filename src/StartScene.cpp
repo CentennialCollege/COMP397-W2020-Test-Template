@@ -16,6 +16,7 @@ StartScene::~StartScene()
 
 void StartScene::draw()
 {
+	m_pOcean->draw();
 	m_pStartLabel->draw();
 	m_pStartButton->draw();
 	
@@ -23,6 +24,7 @@ void StartScene::draw()
 
 void StartScene::update()
 {
+	m_pOcean->update();
 	m_pStartButton->setMousePosition(m_mousePosition);
 	m_pStartButton->ButtonClick();
 }
@@ -100,8 +102,12 @@ void StartScene::handleEvents()
 // this function is used for initialization
 void StartScene::start()
 {
-	SDL_Color blue = { 0, 0, 255, 255 };
-	m_pStartLabel = new Label("Mail Pilot", "Dock51", 80, blue, 
+	m_pOcean = new Ocean();
+	addChild(m_pOcean);
+
+	
+	SDL_Color yellow = { 255, 255, 0, 255 };
+	m_pStartLabel = new Label("Mail Pilot", "Dock51", 80, yellow, 
 		glm::vec2(Config::SCREEN_WIDTH * 0.5f, 100.0f));
 	m_pStartLabel->setParent(this);
 	addChild(m_pStartLabel);

@@ -13,6 +13,8 @@ Level1Scene::~Level1Scene()
 
 void Level1Scene::draw()
 {
+	m_pOcean->draw();
+	
 	m_pIsland->draw();
 	
 	m_pPlane->draw();
@@ -20,10 +22,9 @@ void Level1Scene::draw()
 
 void Level1Scene::update()
 {
+	m_pOcean->update();
+	
 	m_pPlane->update();
-	//m_pPlane->setVelocity(m_pPlane->getVelocity() * 0.97f);
-	// plane moving with mouse motion
-	//m_pPlane->setPosition(glm::vec2(m_mousePosition.x, m_pPlane->getPosition().y));
 
 	//CollisionManager::AABBCheck(m_pPlane, m_pIsland);
 
@@ -130,6 +131,9 @@ void Level1Scene::handleEvents()
 
 void Level1Scene::start()
 {
+	m_pOcean = new Ocean();
+	addChild(m_pOcean);
+	
 	m_pPlane = new Plane(); // instantiates Plane
 	addChild(m_pPlane);
 

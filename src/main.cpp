@@ -53,9 +53,15 @@ int main(int argc, char * args[])
 
 		// Frame Limiter
 		frameTime = SDL_GetTicks() - frameStart;
+		
+		
+		
+		
 		if (frameTime< DELAY_TIME)
 		{
-			SDL_Delay((int)(DELAY_TIME - frameTime));
+			const auto time = int(DELAY_TIME - frameTime);
+			SDL_Delay(time);
+			TheGame::Instance()->setDeltaTime(time * 0.001f);
 		}
 
 		frames++;
