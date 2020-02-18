@@ -5,7 +5,7 @@
 #include "Scene.h"
 #include "Label.h"
 #include "StartButton.h"
-#include "Ocean.h"
+
 
 class StartScene : public Scene
 {
@@ -29,7 +29,6 @@ private:
 	// Game Objects
 	Label* m_pStartLabel;
 	StartButton* m_pStartButton;
-	Ocean* m_pOcean;
 
 	// private data member
 	glm::vec2 m_mousePosition;

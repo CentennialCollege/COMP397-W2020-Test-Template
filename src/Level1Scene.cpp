@@ -13,22 +13,12 @@ Level1Scene::~Level1Scene()
 
 void Level1Scene::draw()
 {
-	m_pOcean->draw();
-	
-	m_pIsland->draw();
-	
-	m_pPlane->draw();
+
 }
 
 void Level1Scene::update()
 {
-	m_pOcean->update();
-	
-	m_pPlane->update();
 
-	//CollisionManager::AABBCheck(m_pPlane, m_pIsland);
-
-	CollisionManager::squaredRadiusCheck(m_pPlane, m_pIsland);
 
 }
 
@@ -95,10 +85,10 @@ void Level1Scene::handleEvents()
 				
 				break;
 			case SDLK_a:
-				m_pPlane->move(LEFT);
+
 				break;
 			case SDLK_d:
-				m_pPlane->move(RIGHT);
+
 				break;
 			}
 			
@@ -115,10 +105,10 @@ void Level1Scene::handleEvents()
 				break;
 
 			case SDLK_a:
-				m_pPlane->setIsMoving(false);
+
 				break;
 			case SDLK_d:
-				m_pPlane->setIsMoving(false);
+
 				break;
 			}
 			
@@ -131,14 +121,7 @@ void Level1Scene::handleEvents()
 
 void Level1Scene::start()
 {
-	m_pOcean = new Ocean();
-	addChild(m_pOcean);
-	
-	m_pPlane = new Plane(); // instantiates Plane
-	addChild(m_pPlane);
 
-	m_pIsland = new Island(); // instantiates Island
-	addChild(m_pIsland);
 }
 
 glm::vec2 Level1Scene::getMousePosition()
