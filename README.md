@@ -1,3 +1,3 @@
-# COMP397-W2020-Lesson6A
+# COMP397-W2020-Test-Template
 
-## Demo for Web Game Programming for Game Students @ Centennial
+## Test template to be used with COMP397 Midterm test
